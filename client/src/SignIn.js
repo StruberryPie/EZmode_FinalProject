@@ -31,11 +31,10 @@ const SignUpBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 30px;
-  border: 1px solid black;
-  /* border-radius: 10px;
-border-style: solid double;
-border-color: black;
-border-width: 2px 6px; */
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
 `;
 
 const SignInForm = styled.div`
@@ -48,14 +47,12 @@ const SignInForm = styled.div`
 
 const TextFields = styled.input`
   margin: 5px;
-  padding: 5px;
   width: 100%;
 `;
 
 const SubmitButton = styled.button`
   width: 100%;
   margin: 5px;
-  padding: 5px;
 `;
 
 const NeedSignUp = styled.a`
