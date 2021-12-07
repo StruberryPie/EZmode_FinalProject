@@ -1,5 +1,12 @@
 const path = require("path");
 const express = require("express");
+const {
+  getAllProfiles,
+  getProfile,
+  addProfile,
+  removeProfile,
+  updateProfile,
+} = require("./handlers");
 
 const PORT = 8000;
 
@@ -8,6 +15,16 @@ express()
 
   // api functions
   /////////////////////////////////////////
+
+  .get("/api/profiles", getAllProfiles)
+
+  .get("/api/profiles/:username", getProfile)
+
+  .post("/api/profiles", addProfile)
+
+  .put("/api/profiles", updateProfile)
+
+  .delete("/api/profiles", removeProfile)
 
   /////////////////////////////////////////
 
