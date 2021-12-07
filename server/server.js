@@ -13,7 +13,7 @@ const PORT = 8000;
 express()
   .use(express.json())
 
-  // api functions
+  // resting api
   /////////////////////////////////////////
 
   .get("/api/profiles", getAllProfiles)
@@ -24,7 +24,7 @@ express()
 
   .put("/api/profiles/:_id", updateProfile)
 
-  .delete("/api/profiles/_id", removeProfile)
+  .delete("/api/profiles/:_id", removeProfile)
 
   /////////////////////////////////////////
 

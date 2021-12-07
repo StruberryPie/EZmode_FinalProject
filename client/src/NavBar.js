@@ -30,7 +30,7 @@ const NavBar = () => {
         <NavButton onClick={playerFunc}>Player</NavButton>
         <NavButton onClick={gameMasterFunc}>GameMaster</NavButton>
       </LeftSideNav>
-      <NavButton onClick={SignInFunc}>LogIn</NavButton>
+      <NavButton onClick={SignInFunc}>Log In</NavButton>
     </Wrapper>
   );
 };

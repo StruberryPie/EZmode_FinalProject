@@ -70,4 +70,13 @@ export default createGlobalStyle`
           content: '';
           content: none;
       }
+      /* extras for buttons and inputs and anchors*/
+      button, a {
+        cursor: pointer;
+      }
+      button, input {
+          border-radius: 5px;
+          padding: 5px;
+          border: none;
+      } 
   `;
