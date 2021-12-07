@@ -18,13 +18,13 @@ express()
 
   .get("/api/profiles", getAllProfiles)
 
-  .get("/api/profiles/:username", getProfile)
+  .get("/api/profiles/:_id", getProfile)
 
   .post("/api/profiles", addProfile)
 
-  .put("/api/profiles", updateProfile)
+  .put("/api/profiles/:_id", updateProfile)
 
-  .delete("/api/profiles", removeProfile)
+  .delete("/api/profiles/_id", removeProfile)
 
   /////////////////////////////////////////
 
