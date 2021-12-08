@@ -1,17 +1,85 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
+import { UserContext } from "./UserContext";
 
 const SignUp = () => {
+  const { user, setUser } = useContext(UserContext);
+
+  const initialState = {
+    username: "",
+    email: "",
+    password: "",
+  };
+
+  const [inputData, setInputData] = useState(initialState);
+
+  const history = useHistory();
+
+  const submitFunc = (ev) => {
+    ev.preventDefault();
+
+    const data = {
+      username: inputData.username,
+      email: inputData.email,
+      password: inputData.password,
+    };
+
+    fetch("/api/profiles", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          console.log(data);
+          setUser(data);
+          history.push("/sign-in");
+        } else {
+          alert("information is wrong or missing.");
+        }
+      });
+  };
+
+  let readyToSubmit = false;
+
+  if (
+    inputData.username !== "" &&
+    inputData.email !== "" &&
+    inputData.password !== ""
+  ) {
+    readyToSubmit = true;
+  }
+
   return (
     <Wrapper>
       <SignInBox>
         <h1>Sign Up</h1>
-        <SignUpForm>
-          <TextFields type="text" placeholder="Username" />
-          <TextFields type="email" placeholder="Email" />
-          <TextFields type="Password" placeholder="Password" />
+        <SignUpForm onSubmit={submitFunc}>
+          <TextFields
+            type="text"
+            placeholder="Username"
+            onChange={(ev) => {
+              setInputData({ ...inputData, username: ev.target.value });
+            }}
+          />
+          <TextFields
+            type="email"
+            placeholder="Email"
+            onChange={(ev) => {
+              setInputData({ ...inputData, email: ev.target.value });
+            }}
+          />
+          <TextFields
+            type="Password"
+            placeholder="Password"
+            onChange={(ev) => {
+              setInputData({ ...inputData, password: ev.target.value });
+            }}
+          />
           <TextFields type="Password" placeholder="Confirm" />
-          <SubmitButton>Sign Up</SubmitButton>
+          <SubmitButton type="submit" value="Sign Up" />
         </SignUpForm>
         <NeedSignIn href="/sign-in">Have an account?</NeedSignIn>
       </SignInBox>
@@ -52,7 +120,7 @@ const TextFields = styled.input`
   width: 100%;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
   width: 100%;
   margin: 5px;
 `;

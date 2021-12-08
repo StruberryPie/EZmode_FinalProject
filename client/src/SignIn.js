@@ -1,15 +1,52 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router";
 import styled from "styled-components";
+import { UserContext } from "./UserContext";
 
 const SignIn = () => {
+  const { users, isLoaded, currentUser, setCurrentUser } =
+    useContext(UserContext);
+
+  const [enteredEmail, setEnteredEmail] = useState("");
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (currentUser) {
+      history.push(`/profile/${currentUser._id}`);
+    }
+  }, []);
+
+  const submitFunc = () => {
+    const isMember = users.find((email) => {
+      return email.email === enteredEmail;
+    });
+
+    if (isMember) {
+      setCurrentUser(isMember);
+      sessionStorage.setItem("loggedInUser", JSON.stringify(isMember));
+      history.push(`/prfile/${isMember._id}`);
+    } else {
+      setCurrentUser("");
+    }
+    console.log("is member");
+  };
+
   return (
     <Wrapper>
       <SignUpBox>
         <h1>Sign In</h1>
-        <SignInForm>
-          <TextFields type="email" placeholder="Email" />
+        <SignInForm onSubmit={submitFunc}>
+          <TextFields
+            type="email"
+            placeholder="Email"
+            value={enteredEmail}
+            onChange={(ev) => {
+              setEnteredEmail(ev.target.value);
+            }}
+          />
           <TextFields type="password" placeholder="Password" />
-          <SubmitButton>Sign In</SubmitButton>
+          <SubmitButton type="submit" value="Sign In" />
         </SignInForm>
         <NeedSignUp href="/sign-up">Need an account?</NeedSignUp>
       </SignUpBox>
@@ -50,7 +87,7 @@ const TextFields = styled.input`
   width: 100%;
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled.input`
   width: 100%;
   margin: 5px;
 `;
