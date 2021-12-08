@@ -107,7 +107,7 @@ const SignInBox = styled.div`
   border-width: 2px 6px;
 `;
 
-const SignUpForm = styled.div`
+const SignUpForm = styled.form`
   margin-top: 10px;
   width: 300px;
   display: flex;

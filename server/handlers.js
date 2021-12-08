@@ -1,5 +1,5 @@
 const { MongoClient } = require("mongodb");
-
+const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 
 require("dotenv").config({ path: "./.env" });
@@ -54,6 +54,32 @@ const getProfile = async (req, res) => {
       client.close();
     } else {
       res.status(404).json({ status: 404, message: "profile not found" });
+      client.close();
+    }
+  } catch (error) {
+    res.status(500).json({ status: 500, message: error.message });
+  }
+};
+
+/////////////////////////////////////////////////////
+
+const getEmail = async (req, res) => {
+  const { email } = req.params;
+
+  try {
+    const client = new MongoClient(MONGO_URI, options);
+
+    await client.connect();
+
+    const db = client.db("EZmode");
+
+    const results = await db.collection("Profiles").findOne({ email });
+
+    if (results) {
+      res.status(200).json({ status: 200, message: "email found", results });
+      client.close();
+    } else {
+      res.status(404).json({ status: 404, message: "email not found" });
       client.close();
     }
   } catch (error) {
@@ -139,6 +165,7 @@ const removeProfile = async (req, res) => {
 module.exports = {
   getAllProfiles,
   getProfile,
+  getEmail,
   addProfile,
   removeProfile,
   updateProfile,

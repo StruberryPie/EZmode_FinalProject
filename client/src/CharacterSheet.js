@@ -7,17 +7,18 @@ const CharacterSheet = () => {
       <div>CharacterSheet</div>
       <MainSheet>
         <TopSection>
-          <p>Character name</p>
+          <input type="text" placeholder="Character Name" />
           <div>
-            {/* use api */}
+            {/* use api for class and exp for level*/}
             <p>class and level</p>
+            {/* unavalible atm */}
             <p>background</p>
-            <p>player name</p>
+            <input type="text" placeholder="Player Name" />
             {/* use api */}
             <p>race</p>
             {/* use api */}
             <p>alignment</p>
-            <p>exp points</p>
+            <input type="text" placeholder="EXP Points" />
           </div>
         </TopSection>
         <LeftColumn>
@@ -32,25 +33,31 @@ const CharacterSheet = () => {
             <p>charisma</p>
           </AbilityScores>
           <p>inspiration</p>
+          {/* +2 for lvl 1 will be in class/race */}
           <p>prificency bonus</p>
           <p>saving throws</p>
           <p>skills</p>
+          {/* 10 + perception */}
           <p>passive perception</p>
           <p>other proficiencies and languages</p>
         </LeftColumn>
         <CenterColumn>
           <div>
             <div>
+              {/* AC = 10 + Dex + armour + Sheild */}
               <p>armor class</p>
+              {/* Dex bonus */}
               <p>initiative</p>
               <p>speed</p>
             </div>
             <div>
+              {/* hit die(class/race) + Con */}
               <p>current hit points</p>
               <p>temporary hit points</p>
             </div>
             <div>
               <p>hit dice</p>
+
               <p>death saves</p>
             </div>
           </div>

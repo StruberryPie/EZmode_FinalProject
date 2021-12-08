@@ -17,19 +17,19 @@ const SignIn = () => {
     }
   }, []);
 
-  const submitFunc = () => {
-    const isMember = users.find((email) => {
-      return email.email === enteredEmail;
-    });
-
-    if (isMember) {
-      setCurrentUser(isMember);
-      sessionStorage.setItem("loggedInUser", JSON.stringify(isMember));
-      history.push(`/prfile/${isMember._id}`);
-    } else {
-      setCurrentUser("");
-    }
-    console.log("is member");
+  const submitFunc = (ev) => {
+    ev.preventDefault();
+    fetch(`/api/profiles/email/${enteredEmail}`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.status === 200) {
+          setCurrentUser(data.results);
+          sessionStorage.setItem("loggedInUser", JSON.stringify(data.results));
+          history.push(`/profile/${data.results._id}`);
+        }
+      });
   };
 
   return (
@@ -74,7 +74,7 @@ const SignUpBox = styled.div`
   border-width: 2px 6px;
 `;
 
-const SignInForm = styled.div`
+const SignInForm = styled.form`
   margin-top: 10px;
   width: 300px;
   display: flex;
