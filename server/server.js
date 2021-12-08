@@ -3,6 +3,7 @@ const express = require("express");
 const {
   getAllProfiles,
   getProfile,
+  getEmail,
   addProfile,
   removeProfile,
   updateProfile,
@@ -19,6 +20,8 @@ express()
   .get("/api/profiles", getAllProfiles)
 
   .get("/api/profiles/:_id", getProfile)
+
+  .get("/api/profiles/email/:email", getEmail)
 
   .post("/api/profiles", addProfile)
 

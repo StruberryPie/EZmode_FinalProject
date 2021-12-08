@@ -79,4 +79,7 @@ export default createGlobalStyle`
           padding: 5px;
           border: none;
       } 
+      textarea {
+          resize: none;
+      }
   `;
