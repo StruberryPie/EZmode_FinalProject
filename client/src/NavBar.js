@@ -9,28 +9,23 @@ const NavBar = () => {
     history.push("/");
   };
 
-  const playerFunc = () => {
-    history.push("/player");
-  };
-
-  const gameMasterFunc = () => {
-    history.push("/game-master");
-  };
-
   const SignInFunc = () => {
     history.push("/sign-in");
   };
 
+  const profileFunc = () => {
+    history.push("/profile");
+  };
+
   return (
     <Wrapper>
-      <LeftSideNav>
-        <Logo onClick={homeFunc}>
-          <b>EZ mode</b>
-        </Logo>
-        <NavButton onClick={playerFunc}>Player</NavButton>
-        <NavButton onClick={gameMasterFunc}>GameMaster</NavButton>
-      </LeftSideNav>
-      <NavButton onClick={SignInFunc}>Log In</NavButton>
+      <Logo onClick={homeFunc}>
+        <b>EZ mode</b>
+      </Logo>
+      <RightSideNav>
+        <NavButton onClick={profileFunc}>Profile</NavButton>
+        <NavButton onClick={SignInFunc}>Log In</NavButton>
+      </RightSideNav>
     </Wrapper>
   );
 };
@@ -45,7 +40,7 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const LeftSideNav = styled.div`
+const RightSideNav = styled.div`
   display: flex;
   align-items: center;
 `;

@@ -71,7 +71,7 @@ export default createGlobalStyle`
           content: none;
       }
       /* extras for buttons and inputs and anchors*/
-      button, a {
+      button, a, input {
         cursor: pointer;
       }
       button, input {
