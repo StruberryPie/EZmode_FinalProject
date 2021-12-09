@@ -79,7 +79,7 @@ const SignUp = () => {
           <TextFields type="Password" placeholder="Confirm" />
           <SubmitButton type="submit" value="Sign Up" />
         </SignUpForm>
-        <NeedSignIn href="/sign-in">Have an account?</NeedSignIn>
+        <NeedSignIn href="/sign-in">Already have an account?</NeedSignIn>
       </SignInBox>
     </Wrapper>
   );
