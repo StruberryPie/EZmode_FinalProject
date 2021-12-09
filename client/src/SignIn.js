@@ -45,6 +45,7 @@ const SignIn = () => {
               setEnteredEmail(ev.target.value);
             }}
           />
+          {/* password is currently not fuctional */}
           <TextFields type="password" placeholder="Password" />
           <SubmitButton type="submit" value="Sign In" />
         </SignInForm>
