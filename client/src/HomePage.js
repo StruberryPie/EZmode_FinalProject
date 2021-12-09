@@ -17,19 +17,19 @@ const HomePage = () => {
     <Wrapper>
       <WelcomeBox>
         <WelcomeMessage>
-          Hello and Welocome to <i>EZ mode</i> table top. We are here to assist
-          in the introduction of table top role play gaming. Trying to automate
-          as much as we can to make your experiance EZ. If you are new, please
-          click{" "}
-          <a href="/sign-in">
-            <b>here</b>
-          </a>{" "}
-          to create a profile and get started on your trek. If you have an
-          accout then click{" "}
-          <a href="/sign-up">
-            <b>here</b>
-          </a>{" "}
-          and continue your adventures.
+          <h1>Hello and Welcome!</h1>
+          <p>
+            This is <i>EZ mode</i> table top. We are here to assist in the
+            introduction of table top role play gaming. Trying to automate as
+            much as we can to make your experiance EZ.
+          </p>
+          <p>
+            If you are new, please click below to create a profile and get
+            started on your trek.
+          </p>
+          <p>
+            If you have an accout then click below and continue your adventures.
+          </p>
         </WelcomeMessage>
         <ButtonBox>
           <Button onClick={signInFunc}>Sign In</Button>
@@ -63,7 +63,6 @@ const WelcomeBox = styled.div`
 
 const WelcomeMessage = styled.p`
   text-align: center;
-  font-size: larger;
   line-height: 200%;
 `;
 

@@ -59,4 +59,7 @@ const Logo = styled.div`
 const NavButton = styled.button`
   cursor: pointer;
   margin: 0 5px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
 `;

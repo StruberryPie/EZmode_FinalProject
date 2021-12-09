@@ -6,12 +6,13 @@ export const UserProvider = ({ children }) => {
   const [users, setUsers] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState();
+  const [dndApis, setDndApis] = useState();
+
+  //////////////////////////////////////////////
 
   useEffect(() => {
     fetch("/api/profiles")
-      .then((res) => {
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
         setUsers(data.results);
         setIsLoaded(!isLoaded);
@@ -23,6 +24,18 @@ export const UserProvider = ({ children }) => {
     }
   }, []);
 
+  //////////////////////////////////////////////
+
+  useEffect(() => {
+    fetch("https://www.dnd5eapi.co/api")
+      .then((res) => res.json())
+      .then((data) => {
+        setDndApis(data);
+      });
+  }, []);
+
+  //////////////////////////////////////////////
+
   return (
     <UserContext.Provider
       value={{
@@ -32,6 +45,7 @@ export const UserProvider = ({ children }) => {
         setIsLoaded,
         currentUser,
         setCurrentUser,
+        dndApis,
       }}
     >
       {children}
