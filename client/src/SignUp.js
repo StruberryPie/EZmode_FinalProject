@@ -33,8 +33,6 @@ const SignUp = () => {
       .then((res) => res.json())
       .then((res) => {
         if (res.status === 200) {
-          console.log(data);
-          setUser(data);
           history.push("/sign-in");
         } else {
           alert("information is wrong or missing.");

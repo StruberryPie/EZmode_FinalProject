@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router";
 import styled from "styled-components";
+import { UserContext } from "./UserContext";
 
 const NavBar = () => {
+  const { currentUser } = useContext(UserContext);
+
   const history = useHistory();
 
   const homeFunc = () => {
@@ -14,7 +17,7 @@ const NavBar = () => {
   };
 
   const profileFunc = () => {
-    history.push("/profile");
+    history.push(`/profile/${currentUser._id}`);
   };
 
   return (
@@ -23,8 +26,11 @@ const NavBar = () => {
         <b>EZ mode</b>
       </Logo>
       <RightSideNav>
-        <NavButton onClick={profileFunc}>Profile</NavButton>
-        <NavButton onClick={SignInFunc}>Log In</NavButton>
+        {currentUser ? (
+          <NavButton onClick={profileFunc}>{currentUser.username}</NavButton>
+        ) : (
+          <NavButton onClick={SignInFunc}>Log In</NavButton>
+        )}
       </RightSideNav>
     </Wrapper>
   );
