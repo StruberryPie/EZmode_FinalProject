@@ -19,13 +19,3 @@ export default CharacterSheet;
 // how to add ame style to mutiple styles?
 
 const Wrapper = styled.div``;
-
-const TopSection = styled.div``;
-
-const LeftColumn = styled.div``;
-
-const AbilityScores = styled.div``;
-
-const CenterColumn = styled.div``;
-
-const RightColumn = styled.div``;

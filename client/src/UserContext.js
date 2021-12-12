@@ -7,6 +7,7 @@ export const UserProvider = ({ children }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [currentUser, setCurrentUser] = useState();
   const [dndApis, setDndApis] = useState();
+  const [character, setCharacter] = useState();
 
   //////////////////////////////////////////////
 
@@ -46,6 +47,8 @@ export const UserProvider = ({ children }) => {
         currentUser,
         setCurrentUser,
         dndApis,
+        character,
+        setCharacter,
       }}
     >
       {children}
