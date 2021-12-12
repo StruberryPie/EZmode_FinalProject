@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import AbilityScore from "./AbilityScore";
+import AbilityScores from "./AbilityScores";
 import Alignment from "./Alignment";
 import ClassAndLevel from "./ClassAndLevel";
 import Race from "./Race";
@@ -23,10 +23,8 @@ const MainSheet = () => {
         </div>
       </TopSection>
       <LeftColumn>
-        <AllAbilityScores>
-          {/* ability modifier is ((abilityScore - 10) / 2 and round down ) */}
-          <AbilityScore />
-        </AllAbilityScores>
+        {/* ability modifier is ((abilityScore - 10) / 2 and round down ) */}
+        <AbilityScores />
         <p>inspiration</p>
         {/* +2 for lvl 1 will be in class/race */}
         <p>prificency bonus</p>
@@ -103,8 +101,6 @@ const Wrapper = styled.div``;
 const TopSection = styled.div``;
 
 const LeftColumn = styled.div``;
-
-const AllAbilityScores = styled.div``;
 
 const CenterColumn = styled.div``;
 

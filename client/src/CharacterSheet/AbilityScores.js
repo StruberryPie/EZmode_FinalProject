@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
+import ScoreSkillsSaves from "./ScoreSkillsSaves";
 
 const AbilityScore = () => {
   const { dndApis } = useContext(UserContext);
@@ -19,13 +20,9 @@ const AbilityScore = () => {
     <>
       {abilityScores ? (
         abilityScores.map((abilityScore) => {
-          let toModifier;
-          // still need to do the math on ability score
           return (
             <>
-              <div>{abilityScore.name}</div>
-              <input placeholder="0" value={toModifier} />
-              <div>0</div>
+              <ScoreSkillsSaves abilityScore={abilityScore} />
             </>
           );
         })
