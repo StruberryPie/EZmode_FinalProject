@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 import Skill from "./Skill";
 
@@ -17,7 +18,7 @@ const Skills = () => {
   }, [dndApis]);
 
   return (
-    <>
+    <Wrapper>
       {skills ? (
         skills.map((skill) => {
           return <Skill skill={skill} />;
@@ -25,8 +26,17 @@ const Skills = () => {
       ) : (
         <div>Loading...</div>
       )}
-    </>
+    </Wrapper>
   );
 };
 
 export default Skills;
+
+const Wrapper = styled.div`
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
+`;

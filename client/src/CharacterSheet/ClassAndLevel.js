@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const ClassAndLevel = () => {
@@ -18,7 +19,7 @@ const ClassAndLevel = () => {
 
   return (
     <>
-      <select
+      <ClassSelect
         onChange={(ev) => {
           setCharacter({ ...character, class: ev.target.value });
         }}
@@ -30,10 +31,20 @@ const ClassAndLevel = () => {
           isClasses.map((isClass) => {
             return <option value={isClasses.index}>{isClass.name}</option>;
           })}
-      </select>
-      <div>{character && character.level}</div>
+      </ClassSelect>
+      <ClassLevel>{character && character.level}</ClassLevel>
     </>
   );
 };
 
 export default ClassAndLevel;
+
+const ClassSelect = styled.select`
+  background-color: lightgrey;
+`;
+
+const ClassLevel = styled.div`
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+`;

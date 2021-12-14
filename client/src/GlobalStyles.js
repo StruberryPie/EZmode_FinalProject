@@ -72,9 +72,9 @@ export default createGlobalStyle`
       }
       /* extras for buttons and inputs and anchors*/
       button, a, input {
-        cursor: pointer;
+          cursor: pointer;
       }
-      button, input {
+      button, input, select {
           border-radius: 5px;
           padding: 5px;
           border: none;

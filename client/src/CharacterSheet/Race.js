@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const Race = () => {
@@ -17,7 +18,7 @@ const Race = () => {
 
   return (
     <>
-      <select
+      <RaceSelect
         onChange={(ev) => {
           setCharacter({ ...character, race: ev.target.value });
         }}
@@ -29,9 +30,14 @@ const Race = () => {
           races.map((race) => {
             return <option value={race.index}>{race.name}</option>;
           })}
-      </select>
+      </RaceSelect>
     </>
   );
 };
 
 export default Race;
+
+const RaceSelect = styled.select`
+  background-color: lightgrey;
+  border: none;
+`;

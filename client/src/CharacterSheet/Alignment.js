@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const Alignment = () => {
@@ -17,7 +18,7 @@ const Alignment = () => {
 
   return (
     <>
-      <select
+      <AlignmentSelect
         onChange={(ev) => {
           setCharacter({ ...character, alignment: ev.target.value });
         }}
@@ -29,9 +30,14 @@ const Alignment = () => {
           alignments.map((alignment) => {
             return <option value={alignment.index}>{alignment.name}</option>;
           })}
-      </select>
+      </AlignmentSelect>
     </>
   );
 };
 
 export default Alignment;
+
+const AlignmentSelect = styled.select`
+  background-color: lightgrey;
+  border: none;
+`;

@@ -7,6 +7,10 @@ import Race from "./Race";
 import Skills from "./Skills";
 import { UserContext } from "../UserContext";
 import ExpPoints from "./ExpPoints";
+import SavingThrows from "./SavingThrows";
+import ProficienciesAndLanguages from "./ProficienciesAndLanguages";
+import DeathSaves from "./DeathSaves";
+import Equipment from "./Equipment";
 
 const MainSheet = () => {
   const { currentUser, character, setCharacter } = useContext(UserContext);
@@ -15,35 +19,49 @@ const MainSheet = () => {
     <Wrapper>
       <div>CharacterSheet</div>
       <TopSection>
-        <input
+        <CharacterName
           type="text"
           placeholder="Character Name"
           onChange={(ev) => {
             setCharacter({ ...character, character_name: ev.target.value });
           }}
         />
-        <div>
-          {/* exp for level */}
-          <ClassAndLevel />
-          {/* unavalible atm */}
-          <p>background</p>
-          <div>{currentUser && currentUser.username}</div>
-          <Race />
-          <Alignment />
-          <ExpPoints />
-        </div>
+        <CharacterIdentity>
+          <TopRow>
+            <ClassAndLevel />
+            {/* unavalible atm */}
+            {/* <Background>background</Background> */}
+            <PlayerName>{currentUser && currentUser.username}</PlayerName>
+          </TopRow>
+          <BottomRow>
+            <Race />
+            <Alignment />
+            <ExpPoints />
+          </BottomRow>
+        </CharacterIdentity>
       </TopSection>
       <LeftColumn>
         {/* ability modifier is ((abilityScore - 10) / 2 and round down ) */}
         <AbilityScores />
-        <input type="text" placeholder="Inspiration" />
+        <Insperation>
+          <InsperationInput type="text" placeholder="0" />
+          <p>Inspiration</p>
+        </Insperation>
         {/* +2 for lvl 1 will be in class/race */}
-        <p>prificency bonus</p>
-        <p>saving throws</p>
+        <Prificency>
+          <PrificencyNumber>prf#</PrificencyNumber>
+          <p>prificency bonus</p>
+        </Prificency>
+        <SavingThrows />
         <Skills />
-        {/* 10 + perception */}
-        <p>passive perception</p>
-        <p>other proficiencies and languages</p>
+        <PassivePerception>
+          {/* 10 + wisdom */}
+          <PassivePerceptionMod>
+            {character.ability_modifier.wis && character.ability_modifier.wis}
+          </PassivePerceptionMod>
+          <p>passive perception</p>
+        </PassivePerception>
+        <ProficienciesAndLanguages />
       </LeftColumn>
       <CenterColumn>
         <div>
@@ -51,7 +69,13 @@ const MainSheet = () => {
             {/* AC = 10 + Dex + armour + Sheild */}
             <p>armor class</p>
             {/* Dex bonus */}
-            <p>initiative</p>
+            <Initiative>
+              <InitiativeNumber>
+                {character.ability_modifier.dex &&
+                  character.ability_modifier.dex}
+              </InitiativeNumber>
+              <p>initiative</p>
+            </Initiative>
             <p>speed</p>
           </div>
           <div>
@@ -61,41 +85,13 @@ const MainSheet = () => {
           </div>
           <div>
             <p>hit dice</p>
-            <p>death saves</p>
+            <DeathSaves />
           </div>
         </div>
         <p>attacks and spellcasting</p>
-        <div>
-          <p>
-            cp "copper piece"
-            <input />
-          </p>
-          <p>
-            sp "silver piece"
-            <input />
-          </p>
-          <p>
-            ep "electrum piece"
-            <input />
-          </p>
-          <p>
-            gp "gold piece"
-            <input />
-          </p>
-          <p>
-            pp "platinum piece"
-            <input />
-          </p>
-          <p>equipment</p>
-        </div>
+        <Equipment />
       </CenterColumn>
       <RightColumn>
-        <div>
-          <p>personal traits</p>
-          <p>ideals</p>
-          <p>bonds</p>
-          <p>flaws</p>
-        </div>
         <p>features and traits</p>
       </RightColumn>
     </Wrapper>
@@ -107,11 +103,119 @@ export default MainSheet;
 // how to add ame style to mutiple styles?
 
 const Wrapper = styled.div`
-  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const TopSection = styled.div`
-  border: 1px solid black;
+  display: flex;
+`;
+
+const CharacterName = styled.input`
+  margin: 5px;
+  padding: 20px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+`;
+
+const CharacterIdentity = styled.div`
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const TopRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Background = styled.p`
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+`;
+
+const PlayerName = styled.div`
+  background-color: lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+`;
+
+const BottomRow = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const Insperation = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
+`;
+
+const InsperationInput = styled.input`
+  max-width: 40px;
+  text-align: center;
+`;
+
+const Prificency = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
+`;
+
+const PrificencyNumber = styled.p`
+  margin-right: 10px;
+`;
+
+const PassivePerception = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
+`;
+
+const PassivePerceptionMod = styled.div`
+  margin-right: 10px;
+`;
+
+const Initiative = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
+`;
+
+const InitiativeNumber = styled.div`
+  margin-right: 10px;
 `;
 
 const LeftColumn = styled.div`

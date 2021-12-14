@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const AbilityModifier = ({ abilityScore }) => {
@@ -7,7 +8,6 @@ const AbilityModifier = ({ abilityScore }) => {
   const [toModifier, setToModifier] = useState(0);
   let isModifier = 0;
   let ability = "";
-  // console.log(skills);
 
   useEffect(() => {
     if (abilityScore) {
@@ -28,25 +28,54 @@ const AbilityModifier = ({ abilityScore }) => {
   }
 
   return (
-    <>
-      <div>{skills && skills.full_name}</div>
-      <input
+    <Wrapper>
+      <AbilityName>{skills && skills.full_name}</AbilityName>
+      <AbilityScoreInput
         type="text"
         value={toModifier}
         onChange={(ev) => {
           setToModifier(ev.target.value);
           setCharacter({
             ...character,
-            ability_score: { [ability]: Number(ev.target.value) },
+            ability_score: {
+              ...character.ability_score,
+              [ability]: Number(ev.target.value),
+            },
             ability_modifier: {
+              ...character.ability_modifier,
               [ability]: Number(Math.floor((ev.target.value - 10) / 2)),
             },
           });
         }}
       />
-      <div>{isModifier}</div>
-    </>
+      <AbilityMod>{isModifier}</AbilityMod>
+    </Wrapper>
   );
 };
 
 export default AbilityModifier;
+
+const Wrapper = styled.div`
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+`;
+
+const AbilityName = styled.div``;
+
+const AbilityScoreInput = styled.input`
+  text-align: center;
+  max-width: 100px;
+`;
+
+const AbilityMod = styled.div`
+  border: 2px solid black;
+  padding: 3px 20px;
+  border-radius: 50%;
+`;
