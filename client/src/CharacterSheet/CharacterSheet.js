@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { UserContext } from "../UserContext";
 import DescriptionSheet from "./DescriptionSheet";
 import MainSheet from "./MainSheet";
 import SpellSheet from "./SpellSheet";
 
 const CharacterSheet = () => {
+  const { character, setCharacter } = useContext(UserContext);
+
   return (
     <Wrapper>
       <MainSheet />
@@ -15,7 +18,5 @@ const CharacterSheet = () => {
 };
 
 export default CharacterSheet;
-
-// how to add ame style to mutiple styles?
 
 const Wrapper = styled.div``;

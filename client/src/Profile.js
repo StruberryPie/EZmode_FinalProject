@@ -13,7 +13,6 @@ const Profile = () => {
       ) : (
         <div>Loading...</div>
       )}
-
       <CharacterSheet />
       <div>start lobby</div>
     </>

@@ -17,13 +17,17 @@ const Alignment = () => {
 
   return (
     <>
-      <select>
+      <select
+        onChange={(ev) => {
+          setCharacter({ ...character, alignment: ev.target.value });
+        }}
+      >
         <option disabled selected>
           Alignment
         </option>
         {alignments &&
           alignments.map((alignment) => {
-            return <option>{alignment.name}</option>;
+            return <option value={alignment.index}>{alignment.name}</option>;
           })}
       </select>
     </>
