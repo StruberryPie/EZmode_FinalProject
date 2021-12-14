@@ -1,27 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../UserContext";
-import AbilityModifier from "./AbilityModifier";
+import SavingThrow from "./SavingThrow";
 
-const AbilityScores = () => {
+const SavingThrows = () => {
   const { dndApis } = useContext(UserContext);
-  const [abilityScores, setAbilityScores] = useState();
+  const [saveThrows, setSaveThrows] = useState();
 
   useEffect(() => {
     if (dndApis) {
       fetch(`https://www.dnd5eapi.co${dndApis["ability-scores"]}`)
         .then((res) => res.json())
         .then((data) => {
-          setAbilityScores(data.results);
+          setSaveThrows(data.results);
         });
     }
   }, [dndApis]);
 
   return (
     <Wrapper>
-      {abilityScores ? (
-        abilityScores.map((abilityScore) => {
-          return <AbilityModifier abilityScore={abilityScore} />;
+      {saveThrows ? (
+        saveThrows.map((saveThrow) => {
+          return <SavingThrow saveThrow={saveThrow} />;
         })
       ) : (
         <div>Loading...</div>
@@ -30,8 +30,15 @@ const AbilityScores = () => {
   );
 };
 
-export default AbilityScores;
+export default SavingThrows;
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  margin: 5px;
 `;

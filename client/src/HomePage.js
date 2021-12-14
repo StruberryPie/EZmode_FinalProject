@@ -23,18 +23,23 @@ const HomePage = () => {
             introduction of table top role play gaming. Trying to automate as
             much as we can to make your experiance EZ.
           </p>
-          <p>
-            If you are new, please click below to create a profile and get
-            started on your trek.
-          </p>
-          <p>
-            If you have an accout then click below and continue your adventures.
-          </p>
         </WelcomeMessage>
-        <ButtonBox>
-          <Button onClick={signInFunc}>Sign In</Button>
-          <Button onClick={signUpFunc}>Sign Up</Button>
-        </ButtonBox>
+        <SignBox>
+          <SignUpBox>
+            <p>
+              If you are new, please click below to create a profile and get
+              started on your trek.
+            </p>
+            <Button onClick={signUpFunc}>Sign Up</Button>
+          </SignUpBox>
+          <SingInBox>
+            <p>
+              If you have an accout then click below and continue your
+              adventures.
+            </p>
+            <Button onClick={signInFunc}>Sign In</Button>
+          </SingInBox>
+        </SignBox>
       </WelcomeBox>
     </Wrapper>
   );
@@ -66,10 +71,34 @@ const WelcomeMessage = styled.p`
   line-height: 200%;
 `;
 
-const ButtonBox = styled.div`
-  margin-top: 10px;
+const SignBox = styled.div`
+  display: flex;
+`;
+
+const SignUpBox = styled.div`
+  margin: 0 15px;
+  text-align: center;
+  line-height: 200%;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  max-width: 200px;
+`;
+
+const SingInBox = styled.div`
+  margin: 0 15px;
+  text-align: center;
+  line-height: 200%;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  max-width: 200px;
 `;
 
 const Button = styled.button`
-  margin: 0 5px;
+  margin: 0 10px;
 `;

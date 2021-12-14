@@ -10,7 +10,7 @@ export const UserProvider = ({ children }) => {
   const [character, setCharacter] = useState({
     character_name: "",
     class: "",
-    level: 0,
+    level: 1,
     race: "",
     alignment: "",
     exp_points: 0,

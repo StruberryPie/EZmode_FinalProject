@@ -4,18 +4,20 @@ const DescriptionSheet = () => {
   return (
     <>
       <div>DescriptionSheet</div>
-      <div>Character Name</div>
-      <div>Age</div>
-      <div>Height</div>
-      <div>Weight</div>
-      <div>Eyes</div>
-      <div>Skin</div>
-      <div>Hair</div>
-      <div>Character Appearance</div>
-      <div>Character Backstory</div>
-      <div>Allies and Organizations</div>
-      <div>Additional Features and Traits</div>
-      <div>Treasure</div>
+      <textarea placeholder="personal traits" />
+      <textarea placeholder="ideals" />
+      <textarea placeholder="bonds" />
+      <textarea placeholder="flaws" />
+      <input type="text" placeholder="Age" />
+      <input type="text" placeholder="Height" />
+      <input type="text" placeholder="Weight" />
+      <input type="text" placeholder="Eyes" />
+      <input type="text" placeholder="Skin" />
+      <input type="text" placeholder="Hair" />
+      <textarea placeholder="Character Appearance" />
+      <textarea placeholder="Character Backstory" />
+      <textarea placeholder="Allies and Organizations" />
+      <textarea placeholder="Treasure" />
     </>
   );
 };
