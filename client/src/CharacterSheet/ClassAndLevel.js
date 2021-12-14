@@ -4,6 +4,7 @@ import { UserContext } from "../UserContext";
 const ClassAndLevel = () => {
   const { dndApis, character, setCharacter } = useContext(UserContext);
   const [isClasses, setIsClasses] = useState();
+  const [selectedClass, setSelectedClass] = useState();
 
   useEffect(() => {
     if (dndApis) {
@@ -17,16 +18,20 @@ const ClassAndLevel = () => {
 
   return (
     <>
-      <select>
+      <select
+        onChange={(ev) => {
+          setCharacter({ ...character, class: ev.target.value });
+        }}
+      >
         <option disabled selected>
           Class
         </option>
         {isClasses &&
           isClasses.map((isClass) => {
-            return <option>{isClass.name}</option>;
+            return <option value={isClasses.index}>{isClass.name}</option>;
           })}
       </select>
-      <input placeholder="level" />
+      <div>{character && character.level}</div>
     </>
   );
 };

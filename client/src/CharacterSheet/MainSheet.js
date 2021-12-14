@@ -1,35 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import AbilityScores from "./AbilityScores";
 import Alignment from "./Alignment";
+import AbilityScores from "./AbilityScores";
 import ClassAndLevel from "./ClassAndLevel";
 import Race from "./Race";
+import Skills from "./Skills";
+import { UserContext } from "../UserContext";
+import ExpPoints from "./ExpPoints";
 
 const MainSheet = () => {
+  const { currentUser, character, setCharacter } = useContext(UserContext);
+
   return (
     <Wrapper>
       <div>CharacterSheet</div>
       <TopSection>
-        <input type="text" placeholder="Character Name" />
+        <input
+          type="text"
+          placeholder="Character Name"
+          onChange={(ev) => {
+            setCharacter({ ...character, character_name: ev.target.value });
+          }}
+        />
         <div>
           {/* exp for level */}
           <ClassAndLevel />
           {/* unavalible atm */}
           <p>background</p>
-          <input type="text" placeholder="Player Name" />
+          <div>{currentUser && currentUser.username}</div>
           <Race />
           <Alignment />
-          <input type="text" placeholder="EXP Points" />
+          <ExpPoints />
         </div>
       </TopSection>
       <LeftColumn>
         {/* ability modifier is ((abilityScore - 10) / 2 and round down ) */}
         <AbilityScores />
-        <p>inspiration</p>
+        <input type="text" placeholder="Inspiration" />
         {/* +2 for lvl 1 will be in class/race */}
         <p>prificency bonus</p>
         <p>saving throws</p>
-        <p>skills</p>
+        <Skills />
         {/* 10 + perception */}
         <p>passive perception</p>
         <p>other proficiencies and languages</p>
@@ -50,7 +61,6 @@ const MainSheet = () => {
           </div>
           <div>
             <p>hit dice</p>
-
             <p>death saves</p>
           </div>
         </div>
@@ -96,12 +106,22 @@ export default MainSheet;
 
 // how to add ame style to mutiple styles?
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  border: 1px solid black;
+`;
 
-const TopSection = styled.div``;
+const TopSection = styled.div`
+  border: 1px solid black;
+`;
 
-const LeftColumn = styled.div``;
+const LeftColumn = styled.div`
+  border: 1px solid red;
+`;
 
-const CenterColumn = styled.div``;
+const CenterColumn = styled.div`
+  border: 1px solid green;
+`;
 
-const RightColumn = styled.div``;
+const RightColumn = styled.div`
+  border: 1px solid blue;
+`;

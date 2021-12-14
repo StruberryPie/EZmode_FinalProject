@@ -17,13 +17,17 @@ const Race = () => {
 
   return (
     <>
-      <select>
+      <select
+        onChange={(ev) => {
+          setCharacter({ ...character, race: ev.target.value });
+        }}
+      >
         <option disabled selected>
           Race
         </option>
         {races &&
           races.map((race) => {
-            return <option>{race.name}</option>;
+            return <option value={race.index}>{race.name}</option>;
           })}
       </select>
     </>

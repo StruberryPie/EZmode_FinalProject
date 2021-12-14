@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../UserContext";
-import ScoreSkillsSaves from "./ScoreSkillsSaves";
+import AbilityModifier from "./AbilityModifier";
 
-const AbilityScore = () => {
+const AbilityScores = () => {
   const { dndApis } = useContext(UserContext);
   const [abilityScores, setAbilityScores] = useState();
 
@@ -20,11 +20,7 @@ const AbilityScore = () => {
     <>
       {abilityScores ? (
         abilityScores.map((abilityScore) => {
-          return (
-            <>
-              <ScoreSkillsSaves abilityScore={abilityScore} />
-            </>
-          );
+          return <AbilityModifier abilityScore={abilityScore} />;
         })
       ) : (
         <div>Loading...</div>
@@ -33,4 +29,4 @@ const AbilityScore = () => {
   );
 };
 
-export default AbilityScore;
+export default AbilityScores;
