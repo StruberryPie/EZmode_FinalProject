@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { UserContext } from "../UserContext";
+import Loading from "./Loading";
 
-const ClassAndLevel = () => {
+const Class = () => {
   const { dndApis, character, setCharacter } = useContext(UserContext);
   const [isClasses, setIsClasses] = useState();
 
@@ -16,9 +16,21 @@ const ClassAndLevel = () => {
     }
   }, [dndApis]);
 
+  useEffect(() => {
+    if (character.class) {
+      fetch(`https://www.dnd5eapi.co/api/classes/${character.class}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setCharacter({ ...character, class_info: data });
+        });
+    }
+  }, [character.class]);
+
   return (
     <>
-      <ClassSelect
+      <div>Class</div>
+      <select
         onChange={(ev) => {
           setCharacter({ ...character, class: ev.target.value });
         }}
@@ -26,23 +38,18 @@ const ClassAndLevel = () => {
         <option disabled selected>
           Class
         </option>
-        {isClasses &&
+        {isClasses ? (
           isClasses.map((isClass) => {
-            return <option value={isClasses.index}>{isClass.name}</option>;
-          })}
-      </ClassSelect>
-      <ClassLevel>lvl {character && character.level}</ClassLevel>
+            return <option value={isClass.index}>{isClass.name}</option>;
+          })
+        ) : (
+          <option>
+            <Loading />
+          </option>
+        )}
+      </select>
     </>
   );
 };
 
-export default ClassAndLevel;
-
-const ClassSelect = styled.select`
-  background-color: lightgrey;
-`;
-
-const ClassLevel = styled.div`
-  border-radius: 5px;
-  padding: 5px;
-`;
+export default Class;

@@ -56,6 +56,7 @@ const AbilityModifier = ({ abilityScore }) => {
 export default AbilityModifier;
 
 const Wrapper = styled.div`
+  background-color: lightgrey;
   padding: 10px;
   border-radius: 10px;
   border-style: solid double;
@@ -70,6 +71,7 @@ const Wrapper = styled.div`
 const AbilityName = styled.div``;
 
 const AbilityScoreInput = styled.input`
+  background-color: lightgrey;
   text-align: center;
   max-width: 100px;
 `;

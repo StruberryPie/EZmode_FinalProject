@@ -3,11 +3,7 @@ import styled from "styled-components";
 
 const Equipment = () => {
   return (
-    <>
-      <div>
-        <p>Equipment</p>
-        <textarea />
-      </div>
+    <Wrapper>
       <div>
         {/* "copper piece" */}
         <p>
@@ -35,15 +31,35 @@ const Equipment = () => {
           <Currency placeholder="0" />
         </p>
       </div>
-    </>
+      <div>
+        <p>Equipment</p>
+        <EquipmentTextarea />
+      </div>
+    </Wrapper>
   );
 };
 
 export default Equipment;
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 10px;
+  border-style: solid double;
+  border-color: black;
+  border-width: 2px 6px;
+  display: flex;
+  align-items: center;
+  margin: 5px;
+`;
 
 const Currency = styled.input`
-max-width:50px
-text-align: center;
+  background-color: lightgrey;
+  margin: 5px 5px 5px 0;
+  max-width: 60px;
+  text-align: center;
+`;
+
+const EquipmentTextarea = styled.textarea`
+  height: 200px;
 `;

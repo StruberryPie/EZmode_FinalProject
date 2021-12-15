@@ -8,14 +8,16 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [dndApis, setDndApis] = useState();
   const [character, setCharacter] = useState({
+    ability_info: {},
+    ability_modifier: {},
+    ability_score: {},
+    alignment: "",
     character_name: "",
     class: "",
-    level: 1,
-    race: "",
-    alignment: "",
     exp_points: 0,
-    ability_score: {},
-    ability_modifier: {},
+    level: 1,
+    proficiency_bonus: 2,
+    race: "",
   });
   console.log(character);
 

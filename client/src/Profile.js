@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import CharacterSheet from "./CharacterSheet/CharacterSheet";
+import CharacterSheet from "./CharacterSheetRW/CharacterSheet";
 import { UserContext } from "./UserContext";
 
 const Profile = () => {
@@ -8,11 +8,7 @@ const Profile = () => {
   return (
     <>
       <div>Profile</div>
-      {currentUser ? (
-        <div>{`${currentUser.username}`}</div>
-      ) : (
-        <div>Loading...</div>
-      )}
+      {currentUser ? <p>{`${currentUser.username}`}</p> : <p>Loading...</p>}
       <CharacterSheet />
       <div>start lobby</div>
     </>

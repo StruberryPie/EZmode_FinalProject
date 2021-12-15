@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const SavingThrow = ({ saveThrow }) => {
-  const { dndApis } = useContext(UserContext);
+  const { dndApis, character } = useContext(UserContext);
   const [savingThrow, setSavingThrow] = useState();
 
   useEffect(() => {
@@ -18,8 +18,12 @@ const SavingThrow = ({ saveThrow }) => {
 
   return (
     <Wrapper>
-      <input type="checkbox" />
-      <ThrowNumber>mod#</ThrowNumber>
+      <ThrowCheckbox type="checkbox" />
+      <ThrowNumber>
+        {saveThrow && character.ability_modifier[saveThrow.index]
+          ? character.ability_modifier[saveThrow.index]
+          : 0}
+      </ThrowNumber>
       <div>{savingThrow && savingThrow.full_name}</div>
     </Wrapper>
   );
@@ -30,6 +34,8 @@ export default SavingThrow;
 const Wrapper = styled.div`
   display: flex;
 `;
+
+const ThrowCheckbox = styled.input``;
 
 const ThrowNumber = styled.p`
   margin: 0 10px;
