@@ -12,7 +12,6 @@ const Abilities = () => {
       fetch(`https://www.dnd5eapi.co${dndApis["ability-scores"]}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setAbilityScores(data.results);
         });
     }

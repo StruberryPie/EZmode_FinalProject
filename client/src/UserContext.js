@@ -8,7 +8,7 @@ export const UserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [dndApis, setDndApis] = useState();
   const [character, setCharacter] = useState({
-    ability_info: {},
+    ability_info: [],
     ability_modifier: {},
     ability_score: {},
     alignment: "",
