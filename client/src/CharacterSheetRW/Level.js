@@ -13,7 +13,6 @@ const Level = () => {
         .then((res) => res.json())
         .then((data) => {
           setCharacter({ ...character, level_info: data });
-          // setLevelInfo(data);
         });
     }
   }, [character.class]);
