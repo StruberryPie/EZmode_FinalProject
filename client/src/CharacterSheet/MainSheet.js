@@ -11,6 +11,11 @@ import SavingThrows from "./SavingThrows";
 import ProficienciesAndLanguages from "./ProficienciesAndLanguages";
 import DeathSaves from "./DeathSaves";
 import Equipment from "./Equipment";
+import ArmorClass from "./ArmorClass";
+import HitPoints from "./HitPoints";
+import ProficiencyBonus from "./ProficiencyBonus";
+import Speed from "./Speed";
+import FeatsAndTraits from "./FeatsAndTraits";
 
 const MainSheet = () => {
   const { currentUser, character, setCharacter } = useContext(UserContext);
@@ -32,9 +37,9 @@ const MainSheet = () => {
             {/* unavalible atm */}
             {/* <Background>background</Background> */}
             <PlayerName>{currentUser && currentUser.username}</PlayerName>
+            <Race />
           </TopRow>
           <BottomRow>
-            <Race />
             <Alignment />
             <ExpPoints />
           </BottomRow>
@@ -48,16 +53,15 @@ const MainSheet = () => {
           <p>Inspiration</p>
         </Insperation>
         {/* +2 for lvl 1 will be in class/race */}
-        <Prificency>
-          <PrificencyNumber>prf#</PrificencyNumber>
-          <p>prificency bonus</p>
-        </Prificency>
+        <ProficiencyBonus />
         <SavingThrows />
         <Skills />
         <PassivePerception>
           {/* 10 + wisdom */}
           <PassivePerceptionMod>
-            {character.ability_modifier.wis && character.ability_modifier.wis}
+            {character.ability_modifier.wis
+              ? 10 + character.ability_modifier.wis
+              : 0}
           </PassivePerceptionMod>
           <p>passive perception</p>
         </PassivePerception>
@@ -67,32 +71,31 @@ const MainSheet = () => {
         <div>
           <div>
             {/* AC = 10 + Dex + armour + Sheild */}
-            <p>armor class</p>
+            <ArmorClass />
             {/* Dex bonus */}
             <Initiative>
               <InitiativeNumber>
-                {character.ability_modifier.dex &&
-                  character.ability_modifier.dex}
+                {character.ability_modifier.dex
+                  ? character.ability_modifier.dex
+                  : 0}
               </InitiativeNumber>
               <p>initiative</p>
             </Initiative>
-            <p>speed</p>
+            <Speed />
           </div>
           <div>
             {/* hit die(class/race) + Con */}
-            <p>current hit points</p>
-            <p>temporary hit points</p>
+            <HitPoints />
           </div>
           <div>
-            <p>hit dice</p>
             <DeathSaves />
           </div>
         </div>
-        <p>attacks and spellcasting</p>
+        {/* <p>attacks and spellcasting</p> */}
         <Equipment />
       </CenterColumn>
       <RightColumn>
-        <p>features and traits</p>
+        <FeatsAndTraits />
       </RightColumn>
     </Wrapper>
   );
@@ -112,6 +115,7 @@ const TopSection = styled.div`
 `;
 
 const CharacterName = styled.input`
+  background-color: lightgrey;
   margin: 5px;
   padding: 20px;
   border-radius: 10px;
@@ -121,6 +125,7 @@ const CharacterName = styled.input`
 `;
 
 const CharacterIdentity = styled.div`
+  background-color: lightgrey;
   margin: 5px;
   padding: 10px;
   border-radius: 10px;
@@ -147,7 +152,6 @@ const Background = styled.p`
 `;
 
 const PlayerName = styled.div`
-  background-color: lightgrey;
   border-radius: 5px;
   padding: 5px;
 `;
@@ -158,6 +162,7 @@ const BottomRow = styled.div`
 `;
 
 const Insperation = styled.div`
+  background-color: lightgrey;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -169,26 +174,13 @@ const Insperation = styled.div`
 `;
 
 const InsperationInput = styled.input`
+  background-color: lightgrey;
   max-width: 40px;
   text-align: center;
 `;
 
-const Prificency = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  border-style: solid double;
-  border-color: black;
-  border-width: 2px 6px;
-  margin: 5px;
-`;
-
-const PrificencyNumber = styled.p`
-  margin-right: 10px;
-`;
-
 const PassivePerception = styled.div`
+  background-color: lightgrey;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -204,6 +196,7 @@ const PassivePerceptionMod = styled.div`
 `;
 
 const Initiative = styled.div`
+  background-color: lightgrey;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -218,14 +211,8 @@ const InitiativeNumber = styled.div`
   margin-right: 10px;
 `;
 
-const LeftColumn = styled.div`
-  border: 1px solid red;
-`;
+const LeftColumn = styled.div``;
 
-const CenterColumn = styled.div`
-  border: 1px solid green;
-`;
+const CenterColumn = styled.div``;
 
-const RightColumn = styled.div`
-  border: 1px solid blue;
-`;
+const RightColumn = styled.div``;

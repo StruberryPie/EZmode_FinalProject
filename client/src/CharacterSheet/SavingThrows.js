@@ -19,6 +19,7 @@ const SavingThrows = () => {
 
   return (
     <Wrapper>
+      <p>Saving Throws</p>
       {saveThrows ? (
         saveThrows.map((saveThrow) => {
           return <SavingThrow saveThrow={saveThrow} />;
@@ -33,6 +34,7 @@ const SavingThrows = () => {
 export default SavingThrows;
 
 const Wrapper = styled.div`
+  background-color: lightgrey;
   display: flex;
   flex-direction: column;
   padding: 10px;

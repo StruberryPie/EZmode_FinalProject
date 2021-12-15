@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const ExpPoints = () => {
@@ -7,8 +6,8 @@ const ExpPoints = () => {
 
   return (
     <>
-      <ExpPointsInput
-        type="text"
+      <div>ExpPoints</div>
+      <input
         placeholder="EXP Points"
         onChange={(ev) => {
           if (ev.target.value >= 355000) {
@@ -159,7 +158,3 @@ const ExpPoints = () => {
 };
 
 export default ExpPoints;
-
-const ExpPointsInput = styled.input`
-  background-color: lightgrey;
-`;

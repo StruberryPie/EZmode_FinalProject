@@ -19,6 +19,7 @@ const Skills = () => {
 
   return (
     <Wrapper>
+      <p>Skills</p>
       {skills ? (
         skills.map((skill) => {
           return <Skill skill={skill} />;
@@ -33,6 +34,7 @@ const Skills = () => {
 export default Skills;
 
 const Wrapper = styled.div`
+  background-color: lightgrey;
   padding: 10px;
   border-radius: 10px;
   border-style: solid double;

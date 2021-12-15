@@ -19,7 +19,11 @@ const Skill = ({ skill }) => {
   return (
     <Wrapper>
       <Proficient type="checkbox" />
-      <ModifierNumber>mod#</ModifierNumber>
+      <ModifierNumber>
+        {skillInfo && character.ability_modifier[skillInfo.ability_score.index]
+          ? character.ability_modifier[skillInfo.ability_score.index]
+          : 0}
+      </ModifierNumber>
       <SkillName>{skillInfo && skillInfo.name}</SkillName>
     </Wrapper>
   );

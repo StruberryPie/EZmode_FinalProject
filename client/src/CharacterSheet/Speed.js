@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
-const ProficienciesAndLanguages = () => {
+const Speed = () => {
   const { character } = useContext(UserContext);
   const [raceInfo, setRaceInfo] = useState();
 
@@ -18,38 +18,26 @@ const ProficienciesAndLanguages = () => {
 
   return (
     <Wrapper>
-      <div>
-        <p>Languages</p>
-        {raceInfo ? (
-          raceInfo.languages.map((language) => {
-            return <p>- {language.name}</p>;
-          })
-        ) : (
-          <p>- Common</p>
-        )}
-      </div>
-      <div>
-        <p>Proficiencies</p>
-        {raceInfo ? (
-          raceInfo.starting_proficiencies.map((proficiency) => {
-            return <p>- {proficiency.name}</p>;
-          })
-        ) : (
-          <p></p>
-        )}
-      </div>
+      <CharacterSpeed>{raceInfo ? raceInfo.speed : 0}</CharacterSpeed>
+      <p>Speed</p>
     </Wrapper>
   );
 };
 
-export default ProficienciesAndLanguages;
+export default Speed;
 
 const Wrapper = styled.div`
   background-color: lightgrey;
+  margin: 5px;
   padding: 10px;
   border-radius: 10px;
   border-style: solid double;
   border-color: black;
   border-width: 2px 6px;
-  margin: 5px;
+  display: flex;
+  align-items: center;
+`;
+
+const CharacterSpeed = styled.div`
+  margin-right: 5px;
 `;
