@@ -21,6 +21,9 @@ const App = () => {
             <Route exact path="/profile/:_id">
               <Profile />
             </Route>
+            {/* <Route exact path="/profile/:_id">
+              <Profile />
+            </Route> */}
             <Route exact path="/sign-up">
               <SignUp />
             </Route>

@@ -7,6 +7,12 @@ const {
   addProfile,
   removeProfile,
   updateProfile,
+  getAllCharacters,
+  getCharacter,
+  addCharacter,
+  updateCharacter,
+  removeCharacter,
+  getCharacterByEmail,
 } = require("./handlers");
 
 const PORT = 8000;
@@ -28,6 +34,18 @@ express()
   .put("/api/profiles/:_id", updateProfile)
 
   .delete("/api/profiles/:_id", removeProfile)
+
+  .get("/api/characters", getAllCharacters)
+
+  .get("/api/characters/:_id", getCharacter)
+
+  .get("/api/chracters/email/:email", getCharacterByEmail)
+
+  .post("/api/characters", addCharacter)
+
+  .put("/api/characters/:_id", updateCharacter)
+
+  .delete("/api/characters/:_id", removeCharacter)
 
   /////////////////////////////////////////
 
