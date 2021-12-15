@@ -20,6 +20,10 @@ import HitPoints from "./HitPoints";
 import DeathSaves from "./DeathSaves";
 import AttacksAndSpellcasting from "./AttacksAndSpellcasting";
 import Equipment from "./Equipment";
+import Traits from "./Traits";
+import Features from "./Features";
+import Personality from "./Personality";
+import Appearance from "./Appearance";
 
 const CharacterSheet = () => {
   return (
@@ -48,6 +52,10 @@ const CharacterSheet = () => {
       <DeathSaves />
       <AttacksAndSpellcasting />
       <Equipment />
+      <Personality />
+      <Traits />
+      <Features />
+      <Appearance />
     </>
   );
 };
