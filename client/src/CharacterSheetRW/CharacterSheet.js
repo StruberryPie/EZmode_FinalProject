@@ -6,6 +6,20 @@ import Class from "./Class";
 import ExpPoints from "./ExpPoints";
 import Level from "./Level";
 import Abilities from "./AbilityScores/Abilities";
+import PassivePerception from "./PassivePerception";
+import Insperation from "./Insperation";
+import ProficiencyBonus from "./ProficiencyBonus";
+import SavingThrows from "./SavingThrows";
+import Skills from "./Skills";
+import Languages from "./Languages";
+import Proficiencies from "./Proficiencies";
+import ArmorClass from "./ArmorClass";
+import Initiative from "./Initiative";
+import Speed from "./Speed";
+import HitPoints from "./HitPoints";
+import DeathSaves from "./DeathSaves";
+import AttacksAndSpellcasting from "./AttacksAndSpellcasting";
+import Equipment from "./Equipment";
 
 const CharacterSheet = () => {
   return (
@@ -20,6 +34,20 @@ const CharacterSheet = () => {
       <Alignment />
       <ExpPoints />
       <Abilities />
+      <Insperation />
+      <ProficiencyBonus />
+      <SavingThrows />
+      <Skills />
+      <PassivePerception />
+      <Languages />
+      <Proficiencies />
+      <ArmorClass />
+      <Initiative />
+      <Speed />
+      <HitPoints />
+      <DeathSaves />
+      <AttacksAndSpellcasting />
+      <Equipment />
     </>
   );
 };

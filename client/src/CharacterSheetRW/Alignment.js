@@ -20,7 +20,6 @@ const Alignment = () => {
       fetch(`https://www.dnd5eapi.co/api/alignments/${character.alignment}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setCharacter({ ...character, alignment_info: data });
         });
     }

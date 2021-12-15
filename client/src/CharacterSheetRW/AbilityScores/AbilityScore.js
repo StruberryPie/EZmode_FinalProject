@@ -13,28 +13,24 @@ const AbilityScore = ({ abilityScore }) => {
       fetch(`https://www.dnd5eapi.co${abilityScore.url}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setAbilityInfo(data);
         });
     }
   }, [abilityScore]);
 
-  //   useEffect(() => {
-  //     if (abilityInfo) {
-  //       fetch(`https://www.dnd5eapi.co${abilityScore.url}`)
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           console.log(data);
-  //           setCharacter({
-  //             ...character,
-  //             ability_info: {
-  //               ...character.ability_info,
-  //               [abilityInfo.index]: data,
-  //             },
-  //           });
-  //         });
-  //     }
-  //   }, [abilityInfo]);
+  useEffect(() => {
+    if (abilityInfo) {
+      character.ability_info.forEach((ability) => {
+        if (ability.index === abilityInfo.index) {
+          ability = abilityInfo;
+        }
+      });
+      setCharacter({
+        ...character,
+        ability_info: [...character.ability_info, abilityInfo],
+      });
+    }
+  }, [abilityInfo]);
 
   if (isAbilityScore) {
     isModifier = Math.floor((isAbilityScore - 10) / 2);
@@ -48,6 +44,8 @@ const AbilityScore = ({ abilityScore }) => {
         value={isAbilityScore}
         onChange={(ev) => {
           setIsAbilityScore(ev.target.value);
+        }}
+        onBlur={(ev) => {
           setCharacter({
             ...character,
             ability_score: {
