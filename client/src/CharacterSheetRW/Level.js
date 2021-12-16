@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const Level = () => {
   const { character, setCharacter } = useContext(UserContext);
-  const [levelInfo, setLevelInfo] = useState();
 
   useEffect(() => {
     if (character.class) {
@@ -18,11 +18,24 @@ const Level = () => {
   }, [character.class]);
 
   return (
-    <>
-      <p>Level</p>
-      <p>{character.level}</p>
-    </>
+    <span>
+      <BoxTitle>Level</BoxTitle>
+      <DisplayedLevel>{character.level}</DisplayedLevel>
+    </span>
   );
 };
 
 export default Level;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;
+
+const DisplayedLevel = styled.p`
+  margin-top: 3px;
+  padding: 2px 14px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px 2px;
+`;

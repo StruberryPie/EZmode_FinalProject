@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const Alignment = () => {
@@ -26,8 +27,8 @@ const Alignment = () => {
   }, [character.alignment]);
 
   return (
-    <>
-      <div>Alignment</div>
+    <span>
+      <BoxTitle>Alignment</BoxTitle>
       <select
         onChange={(ev) => {
           setCharacter({ ...character, alignment: ev.target.value });
@@ -41,8 +42,12 @@ const Alignment = () => {
             return <option value={alignment.index}>{alignment.name}</option>;
           })}
       </select>
-    </>
+    </span>
   );
 };
 
 export default Alignment;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;

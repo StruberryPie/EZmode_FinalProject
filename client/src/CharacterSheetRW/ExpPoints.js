@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 
 const ExpPoints = () => {
   const { character, setCharacter } = useContext(UserContext);
 
   return (
-    <>
-      <div>ExpPoints</div>
+    <span>
+      <BoxTitle>ExpPoints</BoxTitle>
       <input
         placeholder="EXP Points"
         onChange={(ev) => {
@@ -153,8 +154,12 @@ const ExpPoints = () => {
           }
         }}
       />
-    </>
+    </span>
   );
 };
 
 export default ExpPoints;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;

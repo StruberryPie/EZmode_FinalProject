@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../../UserContext";
 import Loading from "../Loading";
 import AbilityScore from "./AbilityScore";
@@ -18,8 +19,8 @@ const Abilities = () => {
   }, [dndApis]);
 
   return (
-    <>
-      <p>Ability Scores</p>
+    <span>
+      <BoxTitle>Ability Scores</BoxTitle>
       {abilityScores ? (
         abilityScores.map((abilityScore) => {
           return <AbilityScore abilityScore={abilityScore} />;
@@ -27,8 +28,12 @@ const Abilities = () => {
       ) : (
         <Loading />
       )}
-    </>
+    </span>
   );
 };
 
 export default Abilities;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;

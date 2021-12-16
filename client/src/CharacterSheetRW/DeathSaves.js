@@ -1,23 +1,36 @@
 import React from "react";
+import styled from "styled-components";
 
 const DeathSaves = () => {
   return (
-    <>
-      <div>
+    <span>
+      <BoxTitle>Death Saves</BoxTitle>
+      <SuccessBox>
         <p>Successes</p>
         <input type="checkbox" />
         <input type="checkbox" />
         <input type="checkbox" />
-      </div>
-      <div>
+      </SuccessBox>
+      <FailBox>
         <p>Failures</p>
         <input type="checkbox" />
         <input type="checkbox" />
         <input type="checkbox" />
-      </div>
-      <p>Death Saves</p>
-    </>
+      </FailBox>
+    </span>
   );
 };
 
 export default DeathSaves;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;
+
+const SuccessBox = styled.div`
+  display: flex;
+`;
+
+const FailBox = styled.div`
+  display: flex;
+`;

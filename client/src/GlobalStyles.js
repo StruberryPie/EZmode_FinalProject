@@ -2,11 +2,11 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
 :root {
-    --color-don-juan: #5B5151;
-    --color-keppel: #39AEA9;
-    --color-moss-green: #A2D5AB;
-    --color-tahuna-sands: #E5EFC1;
-    --color-elm: #22696F;
+    --color-cinnabar: #e94445;
+    --color-blue-dianne: #264c5e;
+    --color-copper-rust: #a34c50;
+    --color-soft-amber: #cec2ae;
+    --color-livid-brown: #4a2932;
 }
 
       *,
@@ -77,9 +77,28 @@ export default createGlobalStyle`
       button, input, select {
           border-radius: 5px;
           padding: 5px;
-          border: none;
+          border-style: solid;
+        border-color: var(--color-blue-dianne);
+        border-width: 2px 0;
       } 
       textarea {
           resize: none;
+      }
+      span {
+        background-color: var(--color-soft-amber);
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px;
+        border-radius: 10px;
+        border-style: solid double;
+        border-color: var(--color-blue-dianne);
+        border-width: 2px 6px;
+        margin: 5px;
+      }
+      button {
+          background-color: var(--color-cinnabar);
       }
   `;

@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import CharacterSheet from "./CharacterSheetRW/CharacterSheet";
 import GlogalStyles from "./GlobalStyles";
 import HomePage from "./HomePage";
 import NavBar from "./NavBar";
@@ -21,9 +22,9 @@ const App = () => {
             <Route exact path="/profile/:_id">
               <Profile />
             </Route>
-            {/* <Route exact path="/profile/:_id">
-              <Profile />
-            </Route> */}
+            <Route exact path="/character-create">
+              <CharacterSheet />
+            </Route>
             <Route exact path="/sign-up">
               <SignUp />
             </Route>

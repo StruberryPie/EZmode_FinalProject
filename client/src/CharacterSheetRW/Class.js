@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 import Loading from "./Loading";
 
@@ -27,8 +28,8 @@ const Class = () => {
   }, [character.class]);
 
   return (
-    <>
-      <div>Class</div>
+    <span>
+      <BoxTitle>Class</BoxTitle>
       <select
         onChange={(ev) => {
           setCharacter({ ...character, class: ev.target.value });
@@ -47,8 +48,12 @@ const Class = () => {
           </option>
         )}
       </select>
-    </>
+    </span>
   );
 };
 
 export default Class;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;
