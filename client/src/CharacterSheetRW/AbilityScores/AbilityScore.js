@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../../UserContext";
 import Loading from "../Loading";
 
@@ -37,9 +38,9 @@ const AbilityScore = ({ abilityScore }) => {
   }
 
   return (
-    <>
-      <p>{abilityInfo ? abilityInfo.name : <Loading />}</p>
-      <input
+    <Wrapper>
+      <BoxTitle>{abilityInfo ? abilityInfo.name : <Loading />}</BoxTitle>
+      <ScoreInput
         placeholder="0"
         value={isAbilityScore}
         onChange={(ev) => {
@@ -61,9 +62,39 @@ const AbilityScore = ({ abilityScore }) => {
           });
         }}
       />
-      <p>{isModifier}</p>
-    </>
+      <Modifier>{isModifier}</Modifier>
+    </Wrapper>
   );
 };
 
 export default AbilityScore;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px 10px 20px 20px;
+  border-style: solid;
+  border-color: var(--color-blue-dianne);
+  border-width: 3px 1px;
+  margin: 5px;
+`;
+
+const BoxTitle = styled.h4`
+  margin-bottom: 5px;
+`;
+
+const ScoreInput = styled.input`
+  width: 50px;
+  text-align: center;
+`;
+
+const Modifier = styled.p`
+  margin-top: 3px;
+  padding: 2px 14px;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: var(--color-blue-dianne);
+  border-width: 1px 2px;
+`;

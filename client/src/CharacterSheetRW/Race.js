@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import styled from "styled-components";
 import { UserContext } from "../UserContext";
 import Loading from "./Loading";
 
@@ -27,8 +28,8 @@ const Race = () => {
   }, [character.race]);
 
   return (
-    <>
-      <div>Race</div>
+    <span>
+      <BoxTitle>Race</BoxTitle>
       <select
         onChange={(ev) => {
           setCharacter({ ...character, race: ev.target.value });
@@ -47,8 +48,12 @@ const Race = () => {
           </option>
         )}
       </select>
-    </>
+    </span>
   );
 };
 
 export default Race;
+
+const BoxTitle = styled.h3`
+  margin-bottom: 5px;
+`;

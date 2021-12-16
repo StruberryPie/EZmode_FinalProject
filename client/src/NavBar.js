@@ -42,7 +42,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: grey;
+  background-color: var(--color-livid-brown);
   padding: 10px;
 `;
 
@@ -54,12 +54,10 @@ const RightSideNav = styled.div`
 const Logo = styled.div`
   cursor: pointer;
   margin-right: 20px;
+  color: white;
 `;
 
 const NavButton = styled.button`
   cursor: pointer;
   margin: 0 5px;
-  border-style: solid double;
-  border-color: black;
-  border-width: 2px 6px;
 `;

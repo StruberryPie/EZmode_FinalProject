@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../UserContext";
 
 const Features = () => {
@@ -7,6 +7,10 @@ const Features = () => {
   return (
     <>
       <p>Features</p>
+      {/* {character.level_info &&
+        character.level_info.map((feature) => {
+          console.log(feature);
+        })} */}
     </>
   );
 };
