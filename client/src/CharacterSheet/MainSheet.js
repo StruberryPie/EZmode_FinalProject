@@ -103,8 +103,6 @@ const MainSheet = () => {
 
 export default MainSheet;
 
-// how to add ame style to mutiple styles?
-
 const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;

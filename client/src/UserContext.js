@@ -20,7 +20,6 @@ export const UserProvider = ({ children }) => {
     race: "",
   });
   const [characters, setCharacters] = useState([]);
-  // console.log(character);
 
   //////////////////////////////////////////////
 

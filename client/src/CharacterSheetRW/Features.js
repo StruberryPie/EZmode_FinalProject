@@ -9,7 +9,6 @@ const Features = () => {
       <p>Features</p>
       {/* {character.level_info &&
         character.level_info.map((feature) => {
-          console.log(feature);
         })} */}
     </>
   );

@@ -11,7 +11,6 @@ const FeatsAndTraits = () => {
       fetch(`https://www.dnd5eapi.co/api/races/${character.race.toLowerCase()}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setRaceInfo(data);
         });
     }
@@ -24,7 +23,6 @@ const FeatsAndTraits = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setRaceInfo(data);
         });
     }

@@ -37,21 +37,7 @@ const SignIn = () => {
           history.push(`/profile/${data.results._id}`);
         }
       });
-
-    //   fetch(`/api/characters/email/${enteredEmail}`)
-    //     .then((res) => {
-    //       return res.json();
-    //     })
-    //     .then((data) => {
-    //       if (data.status === 200) {
-    //         console.log(data.results);
-    //         setCharacters(data.results);
-    //         // sessionStorage.setItem("existing", JSON.stringify(data.results));
-    //         history.push(`/profile/${data.results._id}`);
-    //       }
-    //     });
   };
-  // console.log(characters);
 
   return (
     <Wrapper>

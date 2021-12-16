@@ -19,9 +19,7 @@ const Profile = () => {
         .then((res) => res.json())
         .then((data) => {
           if (data.status === 200) {
-            console.log(data.results);
             setCharacters(data.results);
-            // sessionStorage.setItem("existing", JSON.stringify(data.results));
             history.push(`/profile/${currentUser._id}`);
           }
         });
@@ -46,7 +44,6 @@ const Profile = () => {
               </CharCard>
             );
           })}
-        {/* <CharCard></CharCard> */}
       </CharCardFlexBox>
       {/* <div>start lobby</div> */}
     </>

@@ -30,7 +30,6 @@ import { useHistory } from "react-router-dom";
 
 const CharacterSheet = () => {
   const { currentUser, character } = useContext(UserContext);
-  console.log(character);
 
   const initialState = {
     email: "",
