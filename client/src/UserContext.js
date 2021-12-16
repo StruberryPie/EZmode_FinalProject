@@ -19,7 +19,8 @@ export const UserProvider = ({ children }) => {
     proficiency_bonus: 2,
     race: "",
   });
-  console.log(character);
+  const [characters, setCharacters] = useState([]);
+  // console.log(character);
 
   //////////////////////////////////////////////
 
@@ -61,6 +62,8 @@ export const UserProvider = ({ children }) => {
         dndApis,
         character,
         setCharacter,
+        characters,
+        setCharacters,
       }}
     >
       {children}

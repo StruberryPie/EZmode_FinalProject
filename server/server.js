@@ -39,7 +39,7 @@ express()
 
   .get("/api/characters/:_id", getCharacter)
 
-  .get("/api/chracters/email/:email", getCharacterByEmail)
+  .get("/api/characters/email/:email", getCharacterByEmail)
 
   .post("/api/characters", addCharacter)
 

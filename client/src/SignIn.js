@@ -4,8 +4,14 @@ import styled from "styled-components";
 import { UserContext } from "./UserContext";
 
 const SignIn = () => {
-  const { users, isLoaded, currentUser, setCurrentUser } =
-    useContext(UserContext);
+  const {
+    users,
+    isLoaded,
+    currentUser,
+    setCurrentUser,
+    characters,
+    setCharacters,
+  } = useContext(UserContext);
 
   const [enteredEmail, setEnteredEmail] = useState("");
 
@@ -19,6 +25,7 @@ const SignIn = () => {
 
   const submitFunc = (ev) => {
     ev.preventDefault();
+
     fetch(`/api/profiles/email/${enteredEmail}`)
       .then((res) => {
         return res.json();
@@ -30,7 +37,21 @@ const SignIn = () => {
           history.push(`/profile/${data.results._id}`);
         }
       });
+
+    //   fetch(`/api/characters/email/${enteredEmail}`)
+    //     .then((res) => {
+    //       return res.json();
+    //     })
+    //     .then((data) => {
+    //       if (data.status === 200) {
+    //         console.log(data.results);
+    //         setCharacters(data.results);
+    //         // sessionStorage.setItem("existing", JSON.stringify(data.results));
+    //         history.push(`/profile/${data.results._id}`);
+    //       }
+    //     });
   };
+  // console.log(characters);
 
   return (
     <Wrapper>
@@ -73,6 +94,7 @@ const SignUpBox = styled.div`
   border-style: solid double;
   border-color: black;
   border-width: 2px 6px;
+  background-color: var(--color-soft-amber);
 `;
 
 const SignInForm = styled.form`

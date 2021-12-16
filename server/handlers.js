@@ -226,7 +226,7 @@ const getCharacterByEmail = async (req, res) => {
 
     const db = client.db("EZmode");
 
-    const results = await db.collection("Characters").findOne({ email });
+    const results = await db.collection("Characters").find({ email }).toArray();
 
     if (results) {
       res

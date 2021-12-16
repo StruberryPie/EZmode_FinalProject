@@ -22,6 +22,7 @@ const Class = () => {
       fetch(`https://www.dnd5eapi.co/api/classes/${character.class}`)
         .then((res) => res.json())
         .then((data) => {
+          // console.log(data);
           setCharacter({ ...character, class_info: data });
         });
     }

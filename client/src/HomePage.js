@@ -62,7 +62,8 @@ const WelcomeBox = styled.div`
   padding: 30px;
   border-radius: 10px;
   border-style: solid double;
-  border-color: black;
+  border-color: var(--color-blue-dianne);
+  background-color: var(--color-soft-amber);
   border-width: 2px 6px;
 `;
 
@@ -82,7 +83,7 @@ const SignUpBox = styled.div`
   padding: 10px;
   border-radius: 10px;
   border-style: solid double;
-  border-color: black;
+  border-color: var(--color-blue-dianne);
   border-width: 2px 6px;
   max-width: 200px;
 `;
@@ -94,7 +95,7 @@ const SingInBox = styled.div`
   padding: 10px;
   border-radius: 10px;
   border-style: solid double;
-  border-color: black;
+  border-color: var(--color-blue-dianne);
   border-width: 2px 6px;
   max-width: 200px;
 `;
