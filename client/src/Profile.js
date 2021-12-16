@@ -1,17 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import CharacterSheet from "./CharacterSheetRW/CharacterSheet";
 import { UserContext } from "./UserContext";
 
 const Profile = () => {
-  const { currentUser } = useContext(UserContext);
+  const { currentUser, setCharacters, characters } = useContext(UserContext);
 
   const history = useHistory();
 
   const createCharacterFunc = () => {
     history.push("/character-create");
   };
+
+  useEffect(() => {
+    if (currentUser && currentUser.email) {
+      fetch(`/api/characters/email/${currentUser.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.status === 200) {
+            console.log(data.results);
+            setCharacters(data.results);
+            // sessionStorage.setItem("existing", JSON.stringify(data.results));
+            history.push(`/profile/${currentUser._id}`);
+          }
+        });
+    }
+  }, [currentUser]);
 
   return (
     <>
@@ -20,6 +35,17 @@ const Profile = () => {
           <CharAddOne />
           <CharAddTwo />
         </CharCard>
+        {characters &&
+          characters.map((character) => {
+            return (
+              <CharCard>
+                <p>{character.character.character_name}</p>
+                <p>level {character.character.level}</p>
+                <p>{character.character.class}</p>
+                <p>{character.character.race}</p>
+              </CharCard>
+            );
+          })}
         {/* <CharCard></CharCard> */}
       </CharCardFlexBox>
       {/* <div>start lobby</div> */}

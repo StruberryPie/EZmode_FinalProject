@@ -103,6 +103,7 @@ const SignInBox = styled.div`
   border-style: solid double;
   border-color: black;
   border-width: 2px 6px;
+  background-color: var(--color-soft-amber);
 `;
 
 const SignUpForm = styled.form`
